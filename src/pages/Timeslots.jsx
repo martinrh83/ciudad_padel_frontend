@@ -1,4 +1,4 @@
-import TimeslotsList from "../features/TimeslotsList";
+import TimeslotsList from "../features/booking/TimeslotsList";
 
 export default function Timeslots() {
   return (

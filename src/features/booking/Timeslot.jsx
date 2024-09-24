@@ -1,4 +1,4 @@
-import { TimeslotFormatter } from "../utils/helpers";
+import { TimeslotFormatter } from "../../utils/helpers";
 
 export default function Timeslot({ timeslot }) {
   return (

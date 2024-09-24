@@ -4,9 +4,11 @@ import Footer from "./Footer";
 
 export default function AppLayout() {
   return (
-    <div className="container">
+    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       <Header />
-      <Outlet />
+      <div className="container mx-auto py-16">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
