@@ -1,1 +1,3 @@
-# ciudad_padel_frontend
+# Ciudad Padel
+
+Project developed in React
