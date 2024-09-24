@@ -1,7 +1,9 @@
+import TimeslotsList from "../features/TimeslotsList";
+
 export default function Timeslots() {
   return (
     <div>
-      <p>Timeslots</p>
+      <TimeslotsList />
     </div>
   );
 }
