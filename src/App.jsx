@@ -10,6 +10,7 @@ import AppLayout from "./ui/AppLayout";
 import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import Timeslots from "./pages/Timeslots";
+import Booking from "./pages/Booking";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "/timeslots",
         element: <Timeslots />,
+      },
+      ,
+      {
+        path: "/booking",
+        element: <Booking />,
       },
       {
         path: "*",

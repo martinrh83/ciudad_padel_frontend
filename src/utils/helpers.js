@@ -1,12 +1,22 @@
 import { format } from "date-fns";
 
 export const TimeslotFormatter = ({ startTime }) => {
-  //const startTime = "2024-09-28 14:00:00";
-  //console.log(startTime);
+  if (!startTime || typeof startTime !== "string") {
+    return "Invalid time";
+  }
+
   try {
-    return format(new Date(startTime), "HH:mm");
+    // Creamos una fecha ficticia usando la hora proporcionada
+    const [hours, minutes, seconds] = startTime.split(":");
+    const date = new Date();
+    date.setHours(hours, minutes, seconds);
+
+    // Formateamos usando date-fns
+    return format(date, "HH:mm");
   } catch (error) {
-    console.error("Error formateando el timestamp:", error);
-    return "Invalid date";
+    console.error("Error formateando el tiempo:", error);
+    return "Invalid time";
   }
 };
+
+export const daysOfWeek = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
