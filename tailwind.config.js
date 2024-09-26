@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ["Black Han Sans", "sans-serif"], // Replace 'sans-serif' with a fallback font if needed
+      },
+    },
   },
   plugins: [],
 };
