@@ -9,3 +9,18 @@ export async function getTimeslots() {
   }
   return data;
 }
+
+export async function getTimeSlotsByDayOfWeek(dayOfWeek) {
+  console.log(dayOfWeek);
+  const { data, error } = await supabase
+    .from("timeslots")
+    .select("*, courts(name)")
+    .eq("dayOfWeek", dayOfWeek);
+
+  if (error) {
+    console.error("Error fetching time slots:", error);
+  } else {
+    console.log("Time slots:", data);
+    return data;
+  }
+}
