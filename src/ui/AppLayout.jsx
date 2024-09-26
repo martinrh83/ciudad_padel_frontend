@@ -6,7 +6,7 @@ export default function AppLayout() {
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto] ">
       <Header />
-      <div className=" mx-auto py-16">
+      <div className=" mx-auto pt-36 pb-14">
         <Outlet />
       </div>
       <Footer />
