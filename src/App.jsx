@@ -11,6 +11,9 @@ import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import Timeslots from "./pages/Timeslots";
 import Booking from "./pages/Booking";
+import AdminLayout from "./ui/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminBookingsList from "./pages/admin/AdminBookingsList";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to="/homepage" replace />,
+  },
+  {
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "admin/dashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "admin/bookings_list",
+        element: <AdminBookingsList />,
+      },
+    ],
   },
 ]);
 
