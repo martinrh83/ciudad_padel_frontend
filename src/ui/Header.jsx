@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { RiMenuLine } from "react-icons/ri";
-import { RiMenuUnfold3Line } from "react-icons/ri";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,10 +41,13 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <Button className="hidden sm:block">Reservar</Button>
+
       <div className="sm:hidden">
-        <button onClick={toggleMenu} className="text-2xl">
-          {isMenuOpen ? <RiMenuUnfold3Line /> : <RiMenuLine />}
+        <button
+          onClick={toggleMenu}
+          className="text-2xl ease-in-out duration-300"
+        >
+          {isMenuOpen ? <RiCloseLargeLine /> : <RiMenuLine />}
         </button>
       </div>
 
