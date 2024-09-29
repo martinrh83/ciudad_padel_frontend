@@ -5,13 +5,13 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 
 export default function SidebarAdmin() {
   return (
-    <aside className="bg-slate-50 px-8 py-6 border-r border-slate-200 flex flex-col gap-8">
+    <aside className="bg-custom-bg-slate px-8 py-6 border-r border-slate-200 flex flex-col gap-8">
       <nav>
         <ul className="flex flex-col gap-2">
           <li>
             <NavLink
               to="/admin/dashboard"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-slate-200 rounded-lg active:bg-slate-200 active:font-semibold"
+              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
             >
               <RiHome2Line className="text-2xl transition-all duration-300" />
               <span>Home</span>
@@ -20,7 +20,7 @@ export default function SidebarAdmin() {
           <li>
             <NavLink
               to="/admin/bookings_list"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-slate-200 rounded-lg active:bg-slate-200 active:font-semibold"
+              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
             >
               <RiBookOpenLine className="text-2xl transition-all duration-300" />
               <span>Reservas</span>
@@ -29,7 +29,7 @@ export default function SidebarAdmin() {
           <li>
             <NavLink
               to="/admin/dashboard"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-slate-200 rounded-lg active:bg-slate-200 active:font-semibold"
+              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
             >
               <RiLogoutBoxRLine className="text-2xl transition-all duration-300" />
               <span>Logout</span>
