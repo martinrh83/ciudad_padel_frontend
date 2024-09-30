@@ -14,6 +14,9 @@ import Booking from "./pages/Booking";
 import AdminLayout from "./ui/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBookingsList from "./pages/admin/AdminBookingsList";
+import Login from "./pages/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import ProtectedRouteAdmin from "./ui/admin/ProtectedRouteAdmin";
 
 const queryClient = new QueryClient();
 
@@ -29,10 +32,14 @@ const router = createBrowserRouter([
         path: "/timeslots",
         element: <Timeslots />,
       },
-      ,
+
       {
         path: "/booking",
-        element: <Booking />,
+        element: (
+          <ProtectedRoute>
+            <Booking />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "*",
@@ -45,7 +52,15 @@ const router = createBrowserRouter([
     element: <Navigate to="/homepage" replace />,
   },
   {
-    element: <AdminLayout />,
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout />
+      </ProtectedRouteAdmin>
+    ),
     children: [
       {
         path: "admin/dashboard",
