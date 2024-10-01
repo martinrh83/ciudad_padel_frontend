@@ -12,7 +12,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center bg-white border-b border-b-stone-300 fixed top-0 w-full z-50 transition-all duration-300 ease-in-out">
+    <header className="flex justify-between items-center bg-white border-b border-b-stone-300 fixed top-0 w-full z-50 transition-all duration-300 ease-in-out h-[100px]">
       <img src="logo.jpg" alt="Ciudad Padel Salta" className="h-24 mr-auto" />
       <nav className="hidden sm:block">
         <ul className="flex items-center gap-4 uppercase font-bold text-lg">
