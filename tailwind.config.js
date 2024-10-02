@@ -17,9 +17,13 @@ export default {
         "50%": { transform: "translateY(-2rem) rotate(180deg)" },
         "100%": { transform: "translateY(0) rotate(360deg)" },
       },
+      rotate: {
+        "0%": { transform: " rotate(0deg)" },
+        "100%": { transform: "rotate(360deg)" },
+      },
     },
     animation: {
-      movingY: "combined 2s linear infinite",
+      loading: "rotate 2s linear infinite",
     },
   },
   plugins: [],

@@ -1,13 +1,14 @@
 import { useTimeslotsByDay } from "./useTimeslotsByDay";
 
 import Timeslot from "./Timeslot";
+import Spinner from "../../ui/Spinner";
 
 export default function TimeslotsList({ dayOfWeek }) {
   const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
 
   //console.log("Timeslots:", timeslots);
 
-  if (isLoading) return <p>cargando...</p>;
+  if (isLoading) return <Spinner />;
 
   // Verificamos que timeslots esté definido y no esté vacío
   /* if (!timeslots || timeslots.length === 0) {
