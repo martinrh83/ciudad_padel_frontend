@@ -17,6 +17,7 @@ import AdminBookingsList from "./pages/admin/AdminBookingsList";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import ProtectedRouteAdmin from "./ui/admin/ProtectedRouteAdmin";
+import MyBookings from "./pages/MyBookings";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Booking />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/my_bookings",
+        element: (
+          <ProtectedRoute>
+            <MyBookings />
           </ProtectedRoute>
         ),
       },
