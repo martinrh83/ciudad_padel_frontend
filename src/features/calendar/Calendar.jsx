@@ -20,17 +20,28 @@ import DaysOfWeek from "./DaysOfWeek";
 import { useTimeslotsByDay } from "../booking/useTimeslotsByDay";
 import TimeslotsList from "../booking/TimeslotsList";
 import CalendarHeader from "./CalendarHeader";
+import { useBooking } from "../../contexts/BookingContext";
 
 const Calendar = () => {
+  const {
+    dispatch,
+    user,
+    dayOfWeek: dayOfWeekContext,
+    startTime,
+    price,
+    date,
+  } = useBooking();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [dayOfWeek, setDayOfWeek] = useState(getDay(new Date()));
   //const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
 
   const today = new Date();
-
+  console.log("date", date);
+  console.log("startTime", startTime);
   function handleGetDay(day) {
     console.log(day);
     setDayOfWeek((prevDayOfWeek) => getDay(day));
+    dispatch({ type: "booking/date", payload: day });
   }
 
   const renderCells = () => {
