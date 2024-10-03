@@ -6,6 +6,7 @@ export default function ResponsiveMenu({
   setIsMenuOpen,
   isAuthenticated,
   user,
+  logout,
 }) {
   return (
     <AnimatePresence mode="wait">
@@ -28,7 +29,12 @@ export default function ResponsiveMenu({
                 {!isAuthenticated && <NavLink to="/login">Ingresar</NavLink>}
                 {isAuthenticated && <NavLink to="/login">{user}</NavLink>}
               </li>
-              <li className=" hover:underline cursor-pointer">Cerrar sesion</li>
+              <li
+                className=" hover:underline cursor-pointer"
+                onClick={logout()}
+              >
+                Cerrar sesion
+              </li>
             </ul>
           </div>
         </motion.div>

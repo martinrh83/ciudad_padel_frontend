@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import useUser from "../../features/auth/useUser";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function ProtectedRouteAdmin({ children }) {
   const navigate = useNavigate();
-  const { isLoading, user, isAuthenticated, isAdmin } = useUser();
+  const { isLoading, user, isAuthenticated, isAdmin } = useAuth();
   console.log(user);
 
   useEffect(() => {

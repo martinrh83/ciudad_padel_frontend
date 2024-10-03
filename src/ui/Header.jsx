@@ -6,11 +6,15 @@ import ResponsiveMenu from "./ResponsiveMenu";
 import Spinner from "./Spinner";
 import { RiMenuLine } from "react-icons/ri";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { useAuth } from "../contexts/AuthContext";
+import useLogout from "../features/auth/useLogout";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const { isLoading, isAuthenticated, user } = useUser();
+  //const { isLoading, isAuthenticated, user } = useUser();
+  const { isLoading, isAuthenticated, user } = useAuth();
+  const { logout, isLoading: loadingLogout } = useLogout();
 
   // Alternar el estado del menú
   const toggleMenu = () => {
@@ -59,6 +63,7 @@ export default function Header() {
                             className="hover:underline cursor-pointer"
                             onClick={() => {
                               setSubMenuOpen(false);
+                              logout();
                             }}
                           >
                             Cerrar sesión
@@ -89,6 +94,7 @@ export default function Header() {
           isAuthenticated={isAuthenticated}
           setIsMenuOpen={setIsMenuOpen}
           user={user.email}
+          logout={logout}
         />
       )}
     </header>

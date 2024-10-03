@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import useUser from "../features/auth/useUser";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const { isLoading, user, isAuthenticated } = useUser();
+  const { isLoading, user, isAuthenticated } = useAuth();
+
   console.log(user);
 
   if (isAuthenticated) return children;
