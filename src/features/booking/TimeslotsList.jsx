@@ -2,13 +2,17 @@ import { useTimeslotsByDay } from "./useTimeslotsByDay";
 
 import Timeslot from "./Timeslot";
 import Spinner from "../../ui/Spinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function TimeslotsList({ dayOfWeek, dispatch }) {
+export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
   const [isSelectedIndex, setIsSelectedIndex] = useState(null);
   const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
 
   //console.log("Timeslots:", timeslots);
+  useEffect(() => {
+    // Restablecemos la selección al cambiar el día de la semana
+    setIsSelectedIndex(null);
+  }, [selectedDay]);
 
   if (isLoading) return <Spinner />;
 
@@ -30,7 +34,7 @@ export default function TimeslotsList({ dayOfWeek, dispatch }) {
     console.log(timeslot);
     setIsSelectedIndex(timeslot.id);
     dispatch({
-      type: "booking/timeSlot",
+      type: "booking/timeslot",
       payload: {
         startTime: timeslot.startTime,
         courtId: timeslot.courtId,

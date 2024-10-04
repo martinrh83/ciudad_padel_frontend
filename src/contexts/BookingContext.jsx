@@ -14,12 +14,19 @@ function reducer(state, action) {
   switch (action.type) {
     case "booking/date":
       return { ...state, date: action.payload };
-    case "booking/timeSlot":
+    case "booking/timeslot":
       return {
         ...state,
         dayOfWeek: action.payload.dayOfWeek,
         startTime: action.payload.startTime,
         courtId: action.payload.courtId,
+      };
+    case "booking/resetTimeslot":
+      return {
+        ...state,
+        dayOfWeek: null,
+        startTime: null,
+        courtId: null,
       };
     case "booking/price":
       return { ...state, price: action.payload };
