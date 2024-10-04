@@ -27,17 +27,14 @@ const Calendar = () => {
     dispatch,
     user,
     dayOfWeek: dayOfWeekContext,
-    startTime,
-    price,
-    date,
+    courtId: courtIdContext,
   } = useBooking();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [dayOfWeek, setDayOfWeek] = useState(getDay(new Date()));
   //const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
 
   const today = new Date();
-  console.log("date", date);
-  console.log("startTime", startTime);
+
   function handleGetDay(day) {
     console.log(day);
     setDayOfWeek((prevDayOfWeek) => getDay(day));
@@ -99,7 +96,7 @@ const Calendar = () => {
         <DaysOfWeek />
         {renderCells()}
       </div>
-      {dayOfWeek && <TimeslotsList dayOfWeek={dayOfWeek} />}
+      {dayOfWeek && <TimeslotsList dayOfWeek={dayOfWeek} dispatch={dispatch} />}
     </>
   );
 };

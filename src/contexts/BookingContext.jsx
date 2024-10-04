@@ -7,16 +7,20 @@ const initialState = {
   startTime: null,
   price: null,
   user: null,
+  courtId: null,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "booking/date":
       return { ...state, date: action.payload };
-    case "booking/day":
-      return { ...state, dayOfWeek: action.payload };
-    case "booking/startTime":
-      return { ...state, startTime: action.payload };
+    case "booking/timeSlot":
+      return {
+        ...state,
+        dayOfWeek: action.payload.dayOfWeek,
+        startTime: action.payload.startTime,
+        courtId: action.payload.courtId,
+      };
     case "booking/price":
       return { ...state, price: action.payload };
     case "booking/user":
@@ -27,14 +31,12 @@ function reducer(state, action) {
 }
 
 function BookingProvider({ children }) {
-  const [{ dayOfWeek, startTime, price, user, date }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ dayOfWeek, startTime, price, user, date, courtId }, dispatch] =
+    useReducer(reducer, initialState);
 
   return (
     <BookingContext.Provider
-      value={{ dayOfWeek, startTime, price, user, date, dispatch }}
+      value={{ dayOfWeek, startTime, price, user, date, courtId, dispatch }}
     >
       {children}
     </BookingContext.Provider>

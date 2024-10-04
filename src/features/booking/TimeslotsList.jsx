@@ -2,8 +2,10 @@ import { useTimeslotsByDay } from "./useTimeslotsByDay";
 
 import Timeslot from "./Timeslot";
 import Spinner from "../../ui/Spinner";
+import { useState } from "react";
 
-export default function TimeslotsList({ dayOfWeek }) {
+export default function TimeslotsList({ dayOfWeek, dispatch }) {
+  const [isSelectedIndex, setIsSelectedIndex] = useState(null);
   const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
 
   //console.log("Timeslots:", timeslots);
@@ -23,6 +25,19 @@ export default function TimeslotsList({ dayOfWeek }) {
     return acc;
   }, {});
   console.log(groupedTimeslots);
+
+  function handleSelectTimeslot(timeslot) {
+    console.log(timeslot);
+    setIsSelectedIndex(timeslot.id);
+    dispatch({
+      type: "booking/timeSlot",
+      payload: {
+        startTime: timeslot.startTime,
+        courtId: timeslot.courtId,
+        dayOfWeek: timeslot.dayOfWeek,
+      },
+    });
+  }
   return (
     <>
       {/* {!isLoading && (
@@ -43,7 +58,12 @@ export default function TimeslotsList({ dayOfWeek }) {
               </div>
               <div className="flex flex-wrap">
                 {groupedTimeslots[courtId].map((timeslot) => (
-                  <Timeslot timeslot={timeslot} key={timeslot.id} />
+                  <Timeslot
+                    timeslot={timeslot}
+                    key={timeslot.id}
+                    isSelected={isSelectedIndex === timeslot.id}
+                    onClick={handleSelectTimeslot}
+                  />
                 ))}
               </div>
             </div>
