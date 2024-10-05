@@ -4,8 +4,10 @@ import { TimeslotFormatter } from "../../utils/helpers";
 export default function Timeslot({ timeslot, onClick, isSelected }) {
   return (
     <span
-      className={`border border-solid border-stone-700 p-1 rounded-md m-2 cursor-pointer ${
-        isSelected ? "bg-lime-400" : "bg-transparent"
+      className={`border border-solid  p-1 rounded-lg m-2 cursor-pointer ${
+        isSelected
+          ? "bg-lime-400  text-slate-900 border-slate-900 font-bold"
+          : "bg-transparent text-slate-500 border-slate-300"
       }`}
       onClick={() => onClick(timeslot)}
     >

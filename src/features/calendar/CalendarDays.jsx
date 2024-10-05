@@ -42,7 +42,7 @@ export default function CalendarDays({
       return "cursor-pointer rounded-full border border-slate-900 p-1 bg-lime-400 text-slate-900 font-bold";
     }
 
-    return "cursor-pointer rounded-full border border-slate-400 hover:bg-lime-400 hover:text-white p-1 text-slate-500";
+    return "cursor-pointer rounded-full border border-slate-300 hover:bg-lime-400 hover:text-white p-1 text-slate-500";
   };
 
   const handleDayClick = (day) => {

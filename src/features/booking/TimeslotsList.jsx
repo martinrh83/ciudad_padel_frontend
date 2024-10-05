@@ -1,13 +1,17 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { useTimeslotsByDay } from "./useTimeslotsByDay";
 
 import Timeslot from "./Timeslot";
 import Spinner from "../../ui/Spinner";
-import { useEffect, useState } from "react";
+import Button from "../../ui/Button";
 
 export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
   const [isSelectedIndex, setIsSelectedIndex] = useState(null);
   const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
-
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
   //console.log("Timeslots:", timeslots);
   useEffect(() => {
     // Restablecemos la selección al cambiar el día de la semana
@@ -42,6 +46,18 @@ export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
       },
     });
   }
+
+  function handleOnBooking() {
+    if (isAuthenticated) {
+      console.log("esta logueado");
+      console.log(user);
+      dispatch({ type: "booking/user", payload: user.id });
+      dispatch({ type: "booking/price", payload: 24000 });
+    } else {
+      navigate("/login");
+    }
+  }
+
   return (
     <>
       {/* {!isLoading && (
@@ -54,8 +70,8 @@ export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
       {!isLoading && (
         <div className="flex flex-col items-center justify-center">
           {Object.keys(groupedTimeslots).map((courtId) => (
-            <div key={courtId} className="court-group">
-              <div className="bg-lime-500 text-center font-bold uppercase">
+            <div key={courtId} className="mb-4">
+              <div className="bg-slate-900 text-lime-400 text-center font-semibold rounded-lg uppercase mb-1">
                 <h2 className="p-2">
                   {groupedTimeslots[courtId][0].courts.name}
                 </h2>
@@ -72,6 +88,9 @@ export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
               </div>
             </div>
           ))}
+          <Button isDisabled={!isSelectedIndex} handleOnClick={handleOnBooking}>
+            Reservar
+          </Button>
         </div>
       )}
     </>
