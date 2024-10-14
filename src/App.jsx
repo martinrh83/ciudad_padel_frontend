@@ -20,6 +20,8 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import ProtectedRouteAdmin from "./ui/admin/ProtectedRouteAdmin";
 import MyBookings from "./pages/MyBookings";
+import BookingConfirm from "./pages/BookingConfirm";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Booking />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/booking/confirm",
+        element: (
+          <ProtectedRoute>
+            <BookingConfirm />
           </ProtectedRoute>
         ),
       },
@@ -92,6 +102,24 @@ function App() {
         <BookingProvider>
           <ReactQueryDevtools initialIsOpen={false} />
           <RouterProvider router={router} />
+          <Toaster
+            position="top-center"
+            gutter={12}
+            containerStyle={{ margin: "8px" }}
+            toastOptions={{
+              success: {
+                duration: 3000,
+              },
+              error: {
+                duration: 5000,
+              },
+              style: {
+                fontSize: "18px",
+                maxWidth: "500px",
+                padding: "16px 24px",
+              },
+            }}
+          />
         </BookingProvider>
       </AuthProvider>
     </QueryClientProvider>

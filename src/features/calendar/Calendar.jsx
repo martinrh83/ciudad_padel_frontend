@@ -7,12 +7,7 @@ import { useBooking } from "../../contexts/BookingContext";
 import CalendarDays from "./CalendarDays";
 
 const Calendar = () => {
-  const {
-    dispatch,
-    user,
-    dayOfWeek: dayOfWeekContext,
-    courtId: courtIdContext,
-  } = useBooking();
+  const { dispatch, state: bookingState } = useBooking();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [dayOfWeek, setDayOfWeek] = useState(getDay(new Date()));
   const [selectedDay, setSelectedDay] = useState(new Date());
@@ -44,6 +39,7 @@ const Calendar = () => {
           dayOfWeek={dayOfWeek}
           selectedDay={selectedDay}
           dispatch={dispatch}
+          bookingState={bookingState}
         />
       )}
     </>

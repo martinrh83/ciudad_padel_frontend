@@ -6,8 +6,14 @@ import { useTimeslotsByDay } from "./useTimeslotsByDay";
 import Timeslot from "./Timeslot";
 import Spinner from "../../ui/Spinner";
 import Button from "../../ui/Button";
+import { daysNames } from "../../utils/helpers";
 
-export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
+export default function TimeslotsList({
+  dayOfWeek,
+  selectedDay,
+  dispatch,
+  bookingState,
+}) {
   const [isSelectedIndex, setIsSelectedIndex] = useState(null);
   const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
   const navigate = useNavigate();
@@ -40,9 +46,11 @@ export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
     dispatch({
       type: "booking/timeslot",
       payload: {
+        timeslotId: timeslot.id,
         startTime: timeslot.startTime,
-        courtId: timeslot.courtId,
-        dayOfWeek: timeslot.dayOfWeek,
+        endTime: timeslot.endTime,
+        dayOfWeek: daysNames[timeslot.dayOfWeek],
+        courtName: timeslot.courts["name"],
       },
     });
   }
@@ -50,9 +58,10 @@ export default function TimeslotsList({ dayOfWeek, selectedDay, dispatch }) {
   function handleOnBooking() {
     if (isAuthenticated) {
       console.log("esta logueado");
-      console.log(user);
-      dispatch({ type: "booking/user", payload: user.id });
       dispatch({ type: "booking/price", payload: 24000 });
+      dispatch({ type: "booking/create", payload: { userId: user.id } });
+      console.log(bookingState);
+      navigate("/booking/confirm");
     } else {
       navigate("/login");
     }
