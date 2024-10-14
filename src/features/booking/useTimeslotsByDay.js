@@ -1,16 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTimeSlotsByDayOfWeek } from "../../services/apiTimeslots";
 
-export function useTimeslotsByDay(dayOfWeek) {
+export function useTimeslotsByDay(dayOfWeek, selectedDay) {
   const {
-    data: timeslotsByDay,
+    data,
     isPending: isLoading,
     error,
   } = useQuery({
-    queryKey: ["timeslotsByDay", dayOfWeek], // Incluye el parámetro en la queryKey
-    queryFn: () => getTimeSlotsByDayOfWeek(dayOfWeek), // Llama a la función con el parámetro
+    queryKey: ["timeslotsByDay", dayOfWeek, selectedDay], // Incluye el parámetro en la queryKey
+    queryFn: () => getTimeSlotsByDayOfWeek(dayOfWeek, selectedDay), // Llama a la función con el parámetro
     enabled: !!dayOfWeek, // Asegúrate de que la consulta no se ejecute si dayOfWeek es null o undefined
   });
-
-  return { timeslotsByDay, isLoading, error };
+  const { availableSlots: availableTimeslots = [], timeslotPrice = 0 } =
+    data ?? {};
+  return { availableTimeslots, timeslotPrice, isLoading, error };
 }

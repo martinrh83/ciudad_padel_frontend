@@ -7,6 +7,7 @@ import Timeslot from "./Timeslot";
 import Spinner from "../../ui/Spinner";
 import Button from "../../ui/Button";
 import { daysNames } from "../../utils/helpers";
+import { formatISO } from "date-fns";
 
 export default function TimeslotsList({
   dayOfWeek,
@@ -15,7 +16,11 @@ export default function TimeslotsList({
   bookingState,
 }) {
   const [isSelectedIndex, setIsSelectedIndex] = useState(null);
-  const { timeslotsByDay, isLoading, error } = useTimeslotsByDay(dayOfWeek);
+  const { availableTimeslots, timeslotPrice, isLoading, error } =
+    useTimeslotsByDay(
+      dayOfWeek,
+      formatISO(selectedDay, { representation: "date" })
+    );
   const navigate = useNavigate();
   const { isAuthenticated, user } = useAuth();
   //console.log("Timeslots:", timeslots);
@@ -30,7 +35,7 @@ export default function TimeslotsList({
   /* if (!timeslots || timeslots.length === 0) {
     return <p>No hay horarios disponibles.</p>;
   } */
-  const groupedTimeslots = timeslotsByDay.reduce((acc, timeslot) => {
+  const groupedTimeslots = availableTimeslots.reduce((acc, timeslot) => {
     const { courtId } = timeslot;
     if (!acc[courtId]) {
       acc[courtId] = [];
@@ -79,7 +84,7 @@ export default function TimeslotsList({
       {!isLoading && (
         <div className="flex flex-col items-center justify-center">
           {Object.keys(groupedTimeslots).map((courtId) => (
-            <div key={courtId} className="mb-4">
+            <div key={courtId} className="mb-4 w-full">
               <div className="bg-slate-900 text-lime-400 text-center font-semibold rounded-lg uppercase mb-1">
                 <h2 className="p-2">
                   {groupedTimeslots[courtId][0].courts.name}

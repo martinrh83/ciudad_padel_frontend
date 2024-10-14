@@ -10,17 +10,42 @@ export async function getTimeslots() {
   return data;
 }
 
-export async function getTimeSlotsByDayOfWeek(dayOfWeek) {
+export async function getTimeSlotsByDayOfWeek(dayOfWeek, selectedDay) {
   console.log(dayOfWeek);
-  const { data, error } = await supabase
+  console.log(selectedDay);
+
+  const { data: reservedSlots, error: reservedError } = await supabase
+    .from("bookings")
+    .select("timeslotId")
+    .eq("bookingDate", selectedDay);
+
+  console.log(reservedSlots);
+
+  if (reservedError) {
+    throw new Error(reservedError.message);
+  }
+
+  const reservedTimeslotIds = reservedSlots.map(
+    (booking) => booking.timeslotId
+  );
+
+  const { data: allTimeSlots, error: allSlotsError } = await supabase
     .from("timeslots")
     .select("*, courts(name)")
     .eq("dayOfWeek", dayOfWeek);
 
-  if (error) {
-    console.error("Error fetching time slots:", error);
-  } else {
-    console.log("Time slots:", data);
-    return data;
+  if (allSlotsError) {
+    throw new Error(allSlotsError.message);
   }
+
+  const availableSlots = allTimeSlots.filter(
+    (slot) => !reservedTimeslotIds.includes(slot.id)
+  );
+
+  const { data: timeslotPrice, error } = await supabase
+    .from("settings")
+    .select("timeslotPrice");
+  console.log("settings", timeslotPrice);
+  console.log("Available time slots:", availableSlots);
+  return { availableSlots, timeslotPrice };
 }
