@@ -9,6 +9,8 @@
 }
 
 body {
+  @apply font-text;
+  @apply text-slate-700;
   @apply bg-blue-500; /* Aquí puedes usar las utilidades de Tailwind */
 }
 

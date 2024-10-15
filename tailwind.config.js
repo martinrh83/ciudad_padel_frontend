@@ -9,6 +9,7 @@ export default {
       },
       fontFamily: {
         custom: ["Black Han Sans", "sans-serif"], // Replace 'sans-serif' with a fallback font if needed
+        text: ["Poppins", "sans-serif"],
       },
     },
     keyframes: {

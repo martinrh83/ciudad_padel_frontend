@@ -15,7 +15,10 @@ export async function createBooking(newBooking) {
 export async function getTodaysBookings() {
   //const today = new Date().toISOString().split("T")[0];
 
-  const { data, error } = await supabase.from("todays_bookings").select();
+  const { data, error } = await supabase
+    .from("todays_bookings")
+    .select()
+    .order("startTime", { ascending: true });
 
   if (error) {
     console.error("Error fetching today's bookings:", error);
