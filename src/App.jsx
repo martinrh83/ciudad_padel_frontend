@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BookingProvider } from "./contexts/BookingContext";
+import { Toaster } from "react-hot-toast";
 
 import AppLayout from "./ui/AppLayout";
 import Homepage from "./pages/Homepage";
@@ -21,7 +22,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import ProtectedRouteAdmin from "./ui/admin/ProtectedRouteAdmin";
 import MyBookings from "./pages/MyBookings";
 import BookingConfirm from "./pages/BookingConfirm";
-import { Toaster } from "react-hot-toast";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "admin/bookings_list",
         element: <AdminBookingsList />,
+      },
+      {
+        path: "admin/settings",
+        element: <AdminSettings />,
       },
     ],
   },

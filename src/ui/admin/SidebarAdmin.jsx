@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { RiHome2Line } from "react-icons/ri";
+import { RiHome2Line, RiSettings2Line } from "react-icons/ri";
 import { RiBookOpenLine } from "react-icons/ri";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
@@ -24,6 +24,15 @@ export default function SidebarAdmin() {
             >
               <RiBookOpenLine className="text-2xl transition-all duration-300" />
               <span>Reservas</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/settings"
+              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
+            >
+              <RiSettings2Line className="text-2xl transition-all duration-300" />
+              <span>Configuracion</span>
             </NavLink>
           </li>
           <li>
