@@ -1,3 +1,5 @@
+import TodaysBookingTable from "../../features/admin/home/todaysBookingsTable";
+
 export default function AdminDashboard() {
-  return <div>Admin</div>;
+  return <TodaysBookingTable />;
 }
