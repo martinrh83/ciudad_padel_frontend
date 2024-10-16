@@ -1,49 +1,54 @@
 import { NavLink } from "react-router-dom";
-import { RiHome2Line, RiSettings2Line } from "react-icons/ri";
-import { RiBookOpenLine } from "react-icons/ri";
-import { RiLogoutBoxRLine } from "react-icons/ri";
+import {
+  RiHome2Fill,
+  RiSettings2Fill,
+  RiBookMarkedFill,
+  RiLogoutBoxFill,
+} from "react-icons/ri";
 
 export default function SidebarAdmin() {
+  const menus = [
+    {
+      name: "Home",
+      link: "/admin/dashboard",
+      icon: <RiHome2Fill className="text-4xl" />,
+    },
+    {
+      name: "Reservas",
+      link: "/admin/bookings_list",
+      icon: <RiBookMarkedFill className="text-4xl" />,
+    },
+    {
+      name: "Configuración",
+      link: "/admin/settings",
+      icon: <RiSettings2Fill className="text-4xl" />,
+    },
+    {
+      name: "Cerrar sesión",
+      link: "/",
+      icon: <RiLogoutBoxFill className="text-4xl" />,
+    },
+  ];
+
   return (
-    <aside className="bg-custom-bg-slate px-8 py-6 border-r border-slate-200 flex flex-col gap-8">
-      <nav>
-        <ul className="flex flex-col gap-2">
-          <li>
-            <NavLink
-              to="/admin/dashboard"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
-            >
-              <RiHome2Line className="text-2xl transition-all duration-300" />
-              <span>Home</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admin/bookings_list"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
-            >
-              <RiBookOpenLine className="text-2xl transition-all duration-300" />
-              <span>Reservas</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admin/settings"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
-            >
-              <RiSettings2Line className="text-2xl transition-all duration-300" />
-              <span>Configuracion</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admin/dashboard"
-              className="flex items-center gap-3 bg-slate-50 text-base font-medium py-3 px-6 transition-all duration-300 hover:font-semibold hover:bg-custom-bg-li rounded-lg active:bg-custom-bg-li active:font-semibold"
-            >
-              <RiLogoutBoxRLine className="text-2xl transition-all duration-300" />
-              <span>Logout</span>
-            </NavLink>
-          </li>
+    <aside className="bg-custom-bg-slate px-4 sm:px-8 py-10 border-r border-slate-200 duration-500 transition-all ease-in">
+      <nav className="">
+        <ul className="flex flex-col gap-2 items-center sm:items-start ">
+          {menus.map((menu) => (
+            <li className="sm:w-full" key={menu.name}>
+              <NavLink
+                to={menu.link}
+                className={({ isActive }) =>
+                  `font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 sm:p-2 hover:bg-slate-900 hover:text-white ${
+                    isActive ? "bg-slate-900 text-white" : ""
+                  }`
+                }
+              >
+                {menu.icon}
+                <span className=" hidden sm:block text-xl">{menu.name}</span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </aside>
