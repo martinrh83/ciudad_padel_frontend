@@ -27,3 +27,28 @@ export async function getTodaysBookings() {
 
   return data;
 }
+
+export async function updateBookingStatus(bookingId, newStatus) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(newStatus)
+    .eq("id", bookingId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+  return data;
+}
+
+export async function deleteBooking(id) {
+  const { data, error } = await supabase.from("bookings").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("No se pudo eliminar la reserva seleccionada.");
+  }
+  return data;
+}
