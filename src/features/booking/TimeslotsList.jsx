@@ -82,7 +82,7 @@ export default function TimeslotsList({
         </div>
       )} */}
       {!isLoading && (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full lg:w-1/2">
           {Object.keys(groupedTimeslots).map((courtId) => (
             <div key={courtId} className="mb-4 w-full">
               <div className="bg-slate-900 text-lime-400 text-center font-semibold rounded-lg uppercase mb-1">

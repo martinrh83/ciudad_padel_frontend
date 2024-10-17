@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { GiTennisBall } from "react-icons/gi";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  function handleOnClick() {
+    navigate("/booking");
+  }
+
   return (
     <section className=" bg-custom-bg-slate w-full flex flex-col md:flex-row md:max-h-[800px] md:items-center md:justify-center">
       <div className="md:w-1/2 w-full relative">
@@ -21,7 +28,7 @@ export default function Hero() {
         <p className="font-semibold italic sm:text-lg xl:text-3xl">
           Lunes a sabado de 14 a 00.
         </p>
-        <Button>Reservar</Button>
+        <Button handleOnClick={handleOnClick}>Reservar</Button>
       </div>
     </section>
   );

@@ -31,7 +31,14 @@ export default function SidebarAdmin() {
   ];
 
   return (
-    <aside className="bg-custom-bg-slate px-4 sm:px-8 py-10 border-r border-slate-200 duration-500 transition-all ease-in">
+    <aside className="bg-slate-100 px-4 sm:px-8 py-10 border-r border-slate-200 duration-500 transition-all ease-in">
+      <div className="flex w-full justify-center pb-10">
+        <img
+          src="/logo.png"
+          alt="Ciudad Padel Salta"
+          className="h-12 sm:h-24"
+        />
+      </div>
       <nav className="">
         <ul className="flex flex-col gap-2 items-center sm:items-start ">
           {menus.map((menu) => (

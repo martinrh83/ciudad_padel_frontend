@@ -22,7 +22,7 @@ export default function BookingConfirm() {
   }
 
   return (
-    <div className=" max-w-[450px] sm:max-w-xl lg:max-w-6xl mx-auto bg-white shadow-2xl mt-[50px]">
+    <div className=" max-w-[450px] sm:max-w-xl lg:max-w-6xl mx-auto my-10 shadow-xl">
       <div className="bg-slate-900 text-white flex items-center px-10 py-5 justify-between">
         <GiTennisCourt className="text-[30px]" />
         <p className="text-lg ml-2 mr-auto font-custom">Reserva</p>

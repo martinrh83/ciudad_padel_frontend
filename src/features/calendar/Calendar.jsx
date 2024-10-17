@@ -20,7 +20,7 @@ const Calendar = () => {
 
   return (
     <>
-      <div className="min-w-80 max-w-lg p-4 border rounded shadow-md mb-16 lg:mb-0 lg:mr-16 bg-white">
+      <div className="min-w-80 max-w-lg p-4 border rounded shadow-md mb-16 lg:mb-0 lg:mr-16 bg-white lg:w-1/2">
         <CalendarHeader
           currentMonth={currentMonth}
           setCurrentMonth={setCurrentMonth}

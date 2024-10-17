@@ -16,16 +16,20 @@ export default function Header() {
   const { isLoading, isAuthenticated, user } = useAuth();
   const { logout, isLoading: loadingLogout } = useLogout();
 
-  // Alternar el estado del menú
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((x) => !x);
   };
+
   console.log(isAuthenticated);
   /* if (isLoading) return <Spinner />; */
   return (
-    <header className="flex justify-between items-center bg-white border-b border-b-stone-300 fixed top-0 w-full z-50 transition-all duration-300 ease-in-out h-[100px]">
+    <header className="flex justify-between items-center bg-white fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-10 h-[120px] border-b border-slate-200">
       <NavLink to="/">
-        <img src="logo.jpg" alt="Ciudad Padel Salta" className="h-24 mr-auto" />
+        <img
+          src="logo.png"
+          alt="Ciudad Padel Salta"
+          className="h-24 sm:h-24 mr-auto "
+        />
       </NavLink>
       <nav className="hidden sm:block">
         <ul className="flex items-center gap-4 uppercase font-bold text-lg">
@@ -44,10 +48,10 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -100 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-16 right-0 w-[400px] h-screen z-20"
+                      className="absolute top-16 -right-4 w-[400px] h-screen z-20"
                     >
-                      <div className="text-xl font-semibold uppercase bg-white text-slate-700 py-10 m-6 rounded-3xl">
-                        <ul className="flex flex-col justify-center items-center gap-10 ">
+                      <div className="text-xl font-semibold uppercase bg-white text-slate-700 py-4 m-6 rounded-3xl shadow-xl">
+                        <ul className="flex flex-col justify-center items-center gap-4 ">
                           <li className="hover:underline cursor-pointer">
                             <NavLink
                               onClick={() => setSubMenuOpen(false)}
@@ -83,17 +87,17 @@ export default function Header() {
       <div className="sm:hidden">
         <button
           onClick={toggleMenu}
-          className="text-3xl ease-in-out duration-300 mr-4"
+          className="text-3xl ease-in-out duration-300"
         >
           {isMenuOpen ? <RiCloseLargeLine /> : <RiMenuLine />}
         </button>
       </div>
-      {!isLoading && user && (
+      {!isLoading && (
         <ResponsiveMenu
           isMenuOpen={isMenuOpen}
           isAuthenticated={isAuthenticated}
           setIsMenuOpen={setIsMenuOpen}
-          user={user.email}
+          user={user?.email}
           logout={logout}
         />
       )}

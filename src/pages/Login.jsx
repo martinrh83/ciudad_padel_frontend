@@ -6,7 +6,7 @@ export default function Login() {
       <div className="bg-white py-6 px-8 rounded-[20px] shadow-2xl w-full sm:max-w-[450px]">
         <div className="text-center ">
           <img
-            src="logo.jpg"
+            src="logo.png"
             className="h-[140px] w-[140px] inline-block"
             alt=""
           />
