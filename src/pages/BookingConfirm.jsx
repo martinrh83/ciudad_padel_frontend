@@ -23,11 +23,11 @@ export default function BookingConfirm() {
 
   return (
     <div className=" max-w-[450px] sm:max-w-xl lg:max-w-6xl mx-auto my-10 shadow-xl">
-      <div className="bg-slate-900 text-white flex items-center px-10 py-5 justify-between">
+      <div className="bg-slate-900 text-white flex items-center px-1 sm:px-10 py-5 justify-between">
         <GiTennisCourt className="text-[30px]" />
-        <p className="text-lg ml-2 mr-auto font-custom">Reserva</p>
+        <p className="text-sm sm:text-lg ml-2 mr-auto font-custom">Reserva</p>
 
-        <p className="capitalize font-custom text-lg">
+        <p className="capitalize font-custom text-sm sm:text-lg">
           {format(booking.bookingDate, "EEEE d 'de' MMMM", { locale: es })}
         </p>
       </div>
@@ -41,8 +41,11 @@ export default function BookingConfirm() {
             )} - ${booking.endTime.substring(0, 5)}`}
           </p>
         </div>
-        <div className="py-4 px-8 rounded-sm my-10 bg-lime-100 flex justify-between font-semibold text-lime-700 text-xl w-full">
-          <span>Total a pagar:</span>${booking.price}
+        <div className="py-4 px-8 rounded-xl my-10 bg-lime-100 flex flex-col gap-2 justify-between font-semibold text-lime-700 text-base sm:text-xl">
+          <p>Seña: ${booking.minimunPayment}</p>
+          <p>
+            <span>Total a pagar: </span>${booking.price}
+          </p>
         </div>
         <Button handleOnClick={handleConfirmBooking} isDisabled={isCreating}>
           Reservar

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSlotPriceInSettings } from "../../../services/apiSettings";
+import { getSettings } from "../../../services/apiSettings";
 
 export function useSettings() {
   const {
@@ -8,7 +8,7 @@ export function useSettings() {
     error,
   } = useQuery({
     queryKey: ["settings"],
-    queryFn: getSlotPriceInSettings,
+    queryFn: getSettings,
   });
 
   return { settings, isLoading, error };

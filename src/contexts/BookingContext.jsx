@@ -9,6 +9,7 @@ const initialState = {
   courtName: null,
   timeslotId: null,
   price: null,
+  minimunPayment: null,
   userId: null,
   status: null,
 };
@@ -50,7 +51,11 @@ function reducer(state, action) {
         courtName: null,
       };
     case "booking/price":
-      return { ...state, price: action.payload };
+      return {
+        ...state,
+        price: action.payload.price,
+        minimunPayment: action.payload.minimunPayment,
+      };
     case "booking/user":
       return { ...state, userId: action.payload };
     case "booking/status":

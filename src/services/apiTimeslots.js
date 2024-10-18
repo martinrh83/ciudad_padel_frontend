@@ -42,10 +42,10 @@ export async function getTimeSlotsByDayOfWeek(dayOfWeek, selectedDay) {
     (slot) => !reservedTimeslotIds.includes(slot.id)
   );
 
-  const { data: timeslotPrice, error } = await supabase
+  const { data: settings, error } = await supabase
     .from("settings")
-    .select("timeslotPrice");
-  console.log("settings", timeslotPrice);
+    .select("timeslotPrice, minimunPayment");
+  console.log("settings", settings);
   console.log("Available time slots:", availableSlots);
-  return { availableSlots, timeslotPrice };
+  return { availableSlots, settings };
 }

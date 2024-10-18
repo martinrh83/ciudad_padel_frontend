@@ -1,19 +1,16 @@
 import supabase from "./supabase";
 
-export async function getSlotPriceInSettings() {
-  const { data: slotPrice, error } = await supabase
-    .from("settings")
-    .select("timeslotPrice")
-    .single();
+export async function getSettings() {
+  const { data, error } = await supabase.from("settings").select("*").single();
 
   if (error) {
     throw new Error(error);
   }
-  console.log(slotPrice);
-  return slotPrice;
+  console.log(data);
+  return data;
 }
 
-export async function updateSlotPriceInSettings(newSetting) {
+export async function updateSettings(newSetting) {
   const { data, error } = await supabase
     .from("settings")
     .update(newSetting)

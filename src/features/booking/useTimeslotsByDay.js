@@ -11,7 +11,6 @@ export function useTimeslotsByDay(dayOfWeek, selectedDay) {
     queryFn: () => getTimeSlotsByDayOfWeek(dayOfWeek, selectedDay), // Llama a la función con el parámetro
     enabled: !!dayOfWeek, // Asegúrate de que la consulta no se ejecute si dayOfWeek es null o undefined
   });
-  const { availableSlots: availableTimeslots = [], timeslotPrice = 0 } =
-    data ?? {};
-  return { availableTimeslots, timeslotPrice, isLoading, error };
+  const { availableSlots: availableTimeslots = [], settings = [] } = data ?? {};
+  return { availableTimeslots, settings, isLoading, error };
 }
