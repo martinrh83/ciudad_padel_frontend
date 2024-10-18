@@ -6,7 +6,7 @@ export default function AppLayout() {
   return (
     <div className="grid h-screen grid-rows-[1fr_auto] ">
       <Header />
-      <div className="pt-[120px] w-full">
+      <div className="pt-[80px] sm:pt-[100px] w-full">
         <Outlet />
       </div>
       <Footer />

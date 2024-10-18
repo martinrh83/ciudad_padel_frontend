@@ -23,12 +23,12 @@ export default function Header() {
   console.log(isAuthenticated);
   /* if (isLoading) return <Spinner />; */
   return (
-    <header className="flex justify-between items-center bg-white fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-10 h-[120px] border-b border-slate-200">
+    <header className="flex justify-between items-center bg-white fixed top-0 w-full z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-10 h-[80px] sm:h-[100px] border-b border-slate-200">
       <NavLink to="/">
         <img
           src="logo.png"
           alt="Ciudad Padel Salta"
-          className="h-24 sm:h-24 mr-auto "
+          className="h-16 sm:h-20 mr-auto "
         />
       </NavLink>
       <nav className="hidden sm:block">

@@ -16,7 +16,7 @@ export default function ResponsiveMenu({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -100 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-28 left-0 w-full h-screen z-20"
+          className="absolute top-20 left-0 w-full h-screen z-20"
         >
           <div className="text-lg font-semibold uppercase bg-white text-slate-700 py-6 m-4 rounded-xl shadow-xl">
             <ul className="flex flex-col justify-center items-center gap-4 ">
