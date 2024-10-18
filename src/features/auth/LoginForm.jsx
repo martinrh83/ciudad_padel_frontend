@@ -10,8 +10,8 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "admin@gmail.com",
-      password: "qwer1234",
+      email: "",
+      password: "",
     },
   });
 

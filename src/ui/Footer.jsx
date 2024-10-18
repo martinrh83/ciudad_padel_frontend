@@ -2,6 +2,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 import { RiMapPinLine } from "react-icons/ri";
 import { RiFacebookBoxFill } from "react-icons/ri";
 import { RiInstagramLine } from "react-icons/ri";
+import ContactWhatsapp from "./ContactWhatsapp";
 
 export default function Footer() {
   return (
@@ -13,18 +14,32 @@ export default function Footer() {
           <p className="font-semibold text-lg">San Juan 2045, A4400 Salta</p>
         </div>
       </div>
-      <div className="">
+      <div>
         <h1 className="uppercase text-2xl mb-4">Contacto</h1>
-        <div className="flex items-center">
-          <RiWhatsappLine className="text-2xl mr-2 text-green-400" />
-          <p className="font-semibold text-lg">01131144604</p>
-        </div>
+        <ContactWhatsapp
+          phoneNumber="3876132848"
+          message="Deseo conocer más sobre el club"
+        />
       </div>
       <div>
         <h1 className="uppercase text-2xl mb-4">Seguinos en</h1>
         <div className="flex">
-          <RiFacebookBoxFill className="text-5xl text-blue-500" />
-          <RiInstagramLine className="text-5xl text-pink-500" />
+          <a
+            href="https://www.facebook.com/profile.php?id=100064794472196"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110 mr-4"
+          >
+            <RiFacebookBoxFill className="text-5xl text-blue-500" />
+          </a>
+          <a
+            href="https://www.instagram.com/ciudadpadel/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform transform hover:scale-110"
+          >
+            <RiInstagramLine className="text-5xl text-pink-500" />
+          </a>
         </div>
       </div>
     </div>

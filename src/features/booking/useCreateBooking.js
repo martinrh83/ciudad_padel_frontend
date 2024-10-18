@@ -9,7 +9,7 @@ export function useCreateBooking() {
     onSuccess: () => {
       toast.success("La reserva ha sido confirmada");
       console.log("se reservo");
-      navigate("/booking");
+      navigate("/my_bookings");
     },
   });
 
