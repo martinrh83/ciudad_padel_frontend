@@ -23,6 +23,7 @@ import ProtectedRouteAdmin from "./ui/admin/ProtectedRouteAdmin";
 import MyBookings from "./pages/MyBookings";
 import BookingConfirm from "./pages/BookingConfirm";
 import AdminSettings from "./pages/admin/AdminSettings";
+import Signup from "./pages/Signup";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
   {
     element: (

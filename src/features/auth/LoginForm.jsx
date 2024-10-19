@@ -46,7 +46,6 @@ export default function LoginForm() {
         )}
       </div>
 
-      {/* Campo de password */}
       <div>
         <label
           htmlFor="password"
@@ -71,7 +70,6 @@ export default function LoginForm() {
         )}
       </div>
 
-      {/* Botón de envío */}
       <div className="text-center pt-8">
         <Button type="submit">Iniciar sesion</Button>
       </div>
