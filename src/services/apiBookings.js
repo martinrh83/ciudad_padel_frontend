@@ -72,3 +72,19 @@ export async function getUserBookingsAfterToday(userId) {
 
   return data;
 }
+
+export async function getUpcomingBookings() {
+  const { data, error } = await supabase
+    .from("upcoming_bookings")
+    .select()
+    .order("bookingDate", { ascending: true })
+    .order("startTime", { ascending: true });
+
+  console.log(data);
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return data;
+}

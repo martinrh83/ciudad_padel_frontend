@@ -5,7 +5,7 @@ import Heading from "../../ui/admin/Heading";
 export default function AdminBookingsList() {
   return (
     <>
-      <Heading>Reservas</Heading>
+      <Heading>Proximas Reservas</Heading>
       <Card>
         <BookingsTable />
       </Card>
