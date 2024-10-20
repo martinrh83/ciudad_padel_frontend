@@ -34,7 +34,12 @@ const Calendar = () => {
           dispatch={dispatch}
         />
       </div>
-      {dayOfWeek && (
+      {dayOfWeek === 0 && (
+        <div className="italic text-slate-500 text-lg">
+          Seleccione un día en el calendario para reservar.
+        </div>
+      )}
+      {dayOfWeek !== 0 && (
         <TimeslotsList
           dayOfWeek={dayOfWeek}
           selectedDay={selectedDay}
