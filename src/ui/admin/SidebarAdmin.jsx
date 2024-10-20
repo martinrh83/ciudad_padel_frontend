@@ -5,8 +5,16 @@ import {
   RiBookMarkedFill,
   RiLogoutBoxFill,
 } from "react-icons/ri";
+import useLogout from "../../features/auth/useLogout";
 
 export default function SidebarAdmin() {
+  const { logout } = useLogout();
+
+  function handleLogout(event) {
+    event.preventDefault();
+    logout();
+  }
+
   const menus = [
     {
       name: "Home",
@@ -22,11 +30,6 @@ export default function SidebarAdmin() {
       name: "Configuración",
       link: "/admin/settings",
       icon: <RiSettings2Fill className="text-4xl" />,
-    },
-    {
-      name: "Cerrar sesión",
-      link: "/",
-      icon: <RiLogoutBoxFill className="text-4xl" />,
     },
   ];
 
@@ -56,6 +59,15 @@ export default function SidebarAdmin() {
               </NavLink>
             </li>
           ))}
+          <li className="sm:w-full" key="logout">
+            <div
+              onClick={handleLogout}
+              className={`font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 sm:p-2 hover:bg-slate-900 hover:text-white`}
+            >
+              <RiLogoutBoxFill className="text-4xl" />
+              <span className="hidden sm:block text-xl">Cerrar sesión</span>
+            </div>
+          </li>
         </ul>
       </nav>
     </aside>
