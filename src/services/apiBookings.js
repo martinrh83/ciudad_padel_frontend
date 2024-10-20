@@ -1,3 +1,4 @@
+import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
 export async function createBooking(newBooking) {
@@ -50,5 +51,24 @@ export async function deleteBooking(id) {
     console.error(error);
     throw new Error("No se pudo eliminar la reserva seleccionada.");
   }
+  return data;
+}
+
+export async function getUserBookingsAfterToday(userId) {
+  const today = getToday();
+  console.log(userId);
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*, timeslots(startTime, endTime, dayOfWeek, courts(name))")
+    .eq("userId", userId)
+    .or(`bookingDate.eq.${today},bookingDate.gt.${today}`)
+    .order("bookingDate", { ascending: true });
+
+  console.log(data);
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
   return data;
 }
