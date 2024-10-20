@@ -111,7 +111,9 @@ export default function BookingsTable() {
     getCoreRowModel: getCoreRowModel(),
   }); */
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || isUpdating || isDeleting) return <Spinner />;
+  if (upcomingBookings?.length === 0)
+    return <div className="text-xl">No hay reservas</div>;
 
   return <Table table={table} isLoading={isLoading} />;
 }
