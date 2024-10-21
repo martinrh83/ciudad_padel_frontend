@@ -6,8 +6,8 @@ export function useUpdateBookingStatus() {
   const queryClient = useQueryClient();
 
   const { mutate: updateBookingStatus, isPending: isUpdating } = useMutation({
-    mutationFn: (bookingId) =>
-      updateBookingStatusApi(bookingId, { status: "completed" }),
+    mutationFn: ({ bookingId, newStatus }) =>
+      updateBookingStatusApi(bookingId, { status: newStatus }),
     onSuccess: () => {
       toast.success("El pago de la reserva ha sido confirmado.");
       queryClient.invalidateQueries({ active: true });

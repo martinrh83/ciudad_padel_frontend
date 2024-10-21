@@ -65,3 +65,13 @@ export async function logout() {
   let { error } = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
 }
+
+export async function updateCurrentUser({ fullName, phoneNumber }) {
+  const { data, error } = await supabase.auth.updateUser({
+    data: { fullName: fullName, phone: phoneNumber },
+  });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}

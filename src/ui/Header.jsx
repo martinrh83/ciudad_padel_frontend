@@ -55,7 +55,7 @@ export default function Header() {
                           <li className="hover:underline cursor-pointer">
                             <NavLink
                               onClick={() => setSubMenuOpen(false)}
-                              to="/my_bookings"
+                              to="/profile"
                             >
                               Perfil
                             </NavLink>

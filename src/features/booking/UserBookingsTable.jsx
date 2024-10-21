@@ -14,7 +14,7 @@ export function UserBookingTable({ userBookings }) {
   const statusLabel = {
     pending: "Pendiente",
     confirmed: "Confirmado",
-    completed: "Completo",
+    completed: "Completado",
   };
 
   const data = userBookings?.map((booking) => {
@@ -25,7 +25,8 @@ export function UserBookingTable({ userBookings }) {
       startTime: booking.timeslots.startTime.substring(0, 5),
       endTime: booking.timeslots.endTime.substring(0, 5),
       bookingDate: formatDateTimezone(booking.bookingDate),
-      status: statusLabel[booking.status],
+      status: booking.status,
+      statusLabel: statusLabel[booking.status],
     };
   });
 
@@ -52,7 +53,7 @@ export function UserBookingTable({ userBookings }) {
       header: () => "Precio",
       cell: (info) => <h4>${info.getValue()}</h4>,
     }),
-    columnHelper.accessor("status", {
+    columnHelper.accessor("statusLabel", {
       header: () => "Pago",
       cell: (info) => <Tag type={info.getValue()}>{info.getValue()}</Tag>,
     }),
@@ -60,7 +61,7 @@ export function UserBookingTable({ userBookings }) {
 
   const renderActions = (booking) => (
     <div
-      className="flex gap-1 text-sm items-center justify-center bg-red-200 text-red-500 py-1 px-2 rounded-2xl cursor-pointer"
+      className="flex gap-1 text-xs items-center justify-center bg-red-200 text-red-500 p-2 rounded-2xl cursor-pointer uppercase font-semibold"
       onClick={() => handleCancelBooking(booking)}
     >
       <RiCloseCircleFill className="" />

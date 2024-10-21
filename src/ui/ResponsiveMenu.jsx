@@ -22,7 +22,11 @@ export default function ResponsiveMenu({
             <ul className="flex flex-col justify-center items-center gap-4 ">
               <li className=" hover:underline cursor-pointer">
                 {!isAuthenticated && <NavLink to="/login">Ingresar</NavLink>}
-                {isAuthenticated && <NavLink to="/login">{user}</NavLink>}
+                {isAuthenticated && (
+                  <NavLink to="/profile" onClick={() => setIsMenuOpen(false)}>
+                    Perfil
+                  </NavLink>
+                )}
               </li>
               {isAuthenticated && (
                 <>

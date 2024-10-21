@@ -15,7 +15,7 @@ export default function BookingConfirm() {
       timeslotId: booking.timeslotId,
       price: booking.price,
       userId: booking.userId,
-      status: "confirmed",
+      status: booking.status,
     };
     console.log(newBooking);
     createBooking(newBooking);

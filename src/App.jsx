@@ -24,6 +24,7 @@ import MyBookings from "./pages/MyBookings";
 import BookingConfirm from "./pages/BookingConfirm";
 import AdminSettings from "./pages/admin/AdminSettings";
 import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <MyBookings />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         ),
       },

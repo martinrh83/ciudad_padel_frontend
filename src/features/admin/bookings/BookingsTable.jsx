@@ -33,7 +33,8 @@ export default function BookingsTable() {
       startTime: booking.startTime.substring(0, 5),
       fullName: booking.fullname ?? "-",
       userPhone: booking.phone ?? "-",
-      status: statusLabel[booking.status],
+      status: booking.status,
+      statusLabel: statusLabel[booking.status],
     };
   });
 
@@ -58,7 +59,7 @@ export default function BookingsTable() {
     columnHelper.accessor("userPhone", {
       header: () => "Celular",
     }),
-    columnHelper.accessor("status", {
+    columnHelper.accessor("statusLabel", {
       header: () => "Pago",
       cell: (info) => <Tag type={info.getValue()}>{info.getValue()}</Tag>,
     }),
@@ -66,7 +67,7 @@ export default function BookingsTable() {
 
   const renderActions = (booking) => (
     <div className="flex gap-2 text-2xl">
-      {booking.status !== "Pagada" && (
+      {booking.status !== "completed" && (
         <RiMoneyDollarCircleLine
           className="cursor-pointer"
           onClick={() => handleUpdatBookingStatus(booking)}
@@ -81,8 +82,28 @@ export default function BookingsTable() {
 
   function handleUpdatBookingStatus(booking) {
     console.log("Updating booking status...", booking);
-    if (booking.status !== "Pagada") {
-      updateBookingStatus(booking.id);
+    let newStatus = "";
+
+    switch (booking.status) {
+      case "pending":
+        newStatus = "confirmed";
+        break;
+      case "confirmed":
+        newStatus = "completed";
+        break;
+      case "completed":
+        newStatus = "completed";
+        break;
+      default:
+        console.error(
+          "Ha ocurrido un error al actualizar el estado:",
+          booking.status
+        );
+        return;
+    }
+
+    if (newStatus) {
+      updateBookingStatus({ bookingId: booking.id, newStatus });
     }
   }
 
