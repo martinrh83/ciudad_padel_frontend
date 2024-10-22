@@ -11,6 +11,9 @@ export function useCreateBooking() {
       console.log("se reservo");
       navigate("/my_bookings");
     },
+    onError: (error) => {
+      toast.error(error.message);
+    },
   });
 
   return { createBooking, isCreating };

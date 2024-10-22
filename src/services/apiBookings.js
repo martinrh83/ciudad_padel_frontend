@@ -8,8 +8,14 @@ export async function createBooking(newBooking) {
     .select();
 
   if (error) {
-    throw new Error("Booking was not created");
+    if (error.code === "23505") {
+      throw new Error(
+        "El turno para la fecha y hora seleccionada ya ha sido reservado."
+      );
+    }
+    throw new Error("Ha ocurrido un error al reservar.Intentelo nuevamente.");
   }
+
   return data;
 }
 
