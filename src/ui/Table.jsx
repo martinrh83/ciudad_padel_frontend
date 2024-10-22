@@ -6,7 +6,7 @@ export default function Table({ table, isLoading }) {
 
   return (
     <div className="p-2 block max-w-full overflow-x-scroll overflow-y-hidden">
-      <table className="w-full border rounded-md text-sm shadow-md">
+      <table className="w-full border rounded-md text-sm lg:text-md shadow-md">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
@@ -16,7 +16,7 @@ export default function Table({ table, isLoading }) {
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="border-b border-slate-200 text-left py-4 px-6"
+                  className="border-b border-slate-200 text-left py-4 px-2 lg:px-4 min-w-[100px]"
                 >
                   {header.isPlaceholder
                     ? null
@@ -35,7 +35,7 @@ export default function Table({ table, isLoading }) {
               {row.getVisibleCells().map((cell) => (
                 <td
                   key={cell.id}
-                  className="py-4 px-6 border-b border-slate-200"
+                  className="py-4 px-2 lg:px-4 min-w-[100px] border-b border-slate-200"
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>

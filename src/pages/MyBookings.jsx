@@ -17,7 +17,7 @@ export default function MyBookings() {
   return (
     <div className=" max-w-[350px] sm:max-w-xl lg:max-w-6xl mx-auto my-10 shadow-xl">
       <div className="bg-white p-4 sm:py-8 flex flex-col justify-center items-center gap-4 ">
-        <div className="flex flex-col sm:flex-row items-start gap-2 sm:items-center sm:justify-center">
+        <div className="flex flex-col lg:flex-row items-center gap-2 sm:items-center sm:justify-center">
           <div className="text-sm">
             Puede abonar sus reservas haciendo el pago en el club o por
             mercadopago al alias:
@@ -33,8 +33,10 @@ export default function MyBookings() {
             </span>
           </div>
         </div>
-        <div className="flex justify-center items-center gap-2">
-          <div className="text-sm">Enviar comprobante de pago al:</div>
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-2">
+          <div className="text-sm">
+            Para cancelaciones o enviar comprobantes de pago, comunicarse al:
+          </div>
           <ContactWhatsapp phoneNumber={settings.contactPhone} message="" />
         </div>
         {userBookings.length > 0 && (

@@ -76,7 +76,7 @@ export function UserBookingTable({ userBookings }) {
 
   const table = useReactTable({
     data,
-    columns: renderActions
+    /* columns: renderActions
       ? [
           ...columns,
           {
@@ -85,7 +85,8 @@ export function UserBookingTable({ userBookings }) {
             cell: (info) => renderActions(info.row.original),
           },
         ]
-      : columns,
+      : columns, */
+    columns,
     getCoreRowModel: getCoreRowModel(),
   });
 

@@ -34,38 +34,38 @@ export default function SidebarAdmin() {
   ];
 
   return (
-    <aside className="bg-slate-100 px-4 sm:px-8 py-10 border-r border-slate-200 duration-500 transition-all ease-in">
+    <aside className="bg-slate-100 px-4 lg:px-8 py-10 border-r border-slate-200 duration-500 transition-all ease-in">
       <div className="flex w-full justify-center pb-10">
         <img
           src="/logo.png"
           alt="Ciudad Padel Salta"
-          className="h-12 sm:h-24"
+          className="h-12 lg:h-24"
         />
       </div>
       <nav className="">
-        <ul className="flex flex-col gap-2 items-center sm:items-start ">
+        <ul className="flex flex-col gap-2 items-center lg:items-start ">
           {menus.map((menu) => (
-            <li className="sm:w-full" key={menu.name}>
+            <li className="lg:w-full" key={menu.name}>
               <NavLink
                 to={menu.link}
                 className={({ isActive }) =>
-                  `font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 sm:p-2 hover:bg-slate-900 hover:text-white ${
+                  `font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 lg:p-2 hover:bg-slate-900 hover:text-white ${
                     isActive ? "bg-slate-900 text-white" : ""
                   }`
                 }
               >
                 {menu.icon}
-                <span className=" hidden sm:block text-xl">{menu.name}</span>
+                <span className=" hidden lg:block text-xl">{menu.name}</span>
               </NavLink>
             </li>
           ))}
-          <li className="sm:w-full" key="logout">
+          <li className="lg:w-full" key="logout">
             <div
               onClick={handleLogout}
-              className={`font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 sm:p-2 hover:bg-slate-900 hover:text-white`}
+              className={`font-semibold flex items-center gap-4 rounded-lg transition-all duration-300 p-4 lg:p-2 hover:bg-slate-900 hover:text-white`}
             >
               <RiLogoutBoxFill className="text-4xl" />
-              <span className="hidden sm:block text-xl">Cerrar sesión</span>
+              <span className="hidden lg:block text-xl">Cerrar sesión</span>
             </div>
           </li>
         </ul>

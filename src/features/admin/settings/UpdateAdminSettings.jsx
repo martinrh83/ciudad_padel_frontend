@@ -18,7 +18,7 @@ export default function UpdateAdminSettings() {
     updateSettings({ [field]: value });
   }
   return (
-    <form>
+    <form className="px-4">
       <div className="my-4">
         <label className="block text-md font-medium text-slate-600">
           Precio turno
